@@ -12,6 +12,7 @@ body {
     /* these 3 above -> make virtical center */
     justify-content: center;
     /* justify-content: center - need body height */
+    /* justify-content: aligns the entire flex or grid container’s items (children)*/
     height: 100vh;
     overflow: hidden;
     /* overflow: hidden - no scroll bar */
