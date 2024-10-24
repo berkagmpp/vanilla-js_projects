@@ -81,6 +81,15 @@ body {
     border-color: var(--line-border-fill);
 }
 
+p {
+    color: #999;
+}
+
+p.n-active {
+    color: var(--line-border-fill);
+    font-weight: 700;
+}
+
 .btn {
     background-color: var(--line-border-fill);
     color: white;

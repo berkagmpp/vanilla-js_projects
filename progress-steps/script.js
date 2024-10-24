@@ -1,5 +1,6 @@
 const progress = document.getElementById('progress');
 const circles = document.querySelectorAll('.circle');
+const nums = document.querySelectorAll('.num');
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
 
@@ -24,13 +25,20 @@ prev.addEventListener('click', () => {
 
   update();
 });
-
 function update() {
   circles.forEach((circle, i) => {
     if (i < currentActive) {
       circle.classList.add('active');
     } else {
       circle.classList.remove('active');
+    }
+  });
+
+  nums.forEach((num, i) => {
+    if (i < currentActive) {
+      num.classList.add('n-active');
+    } else {
+      num.classList.remove('n-active');
     }
   });
 
