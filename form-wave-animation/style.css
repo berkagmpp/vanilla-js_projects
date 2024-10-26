@@ -93,7 +93,10 @@ body {
     transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+/* Cubic Bezier curve is defined by four points P0, P1, P2, and P3. P0 and P3 are the start and the end of the curve */
+
 .form-control input:focus+label span,
+/* When the input is focused and the label is a sibling of the input */
 .form-control input:valid+label span {
     color: lightblue;
     transform: translateY(-30px);
