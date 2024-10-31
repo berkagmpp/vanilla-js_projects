@@ -51,7 +51,7 @@ function updateBigCup() {
   } else {
     remained.style.visibility = 'visible';
     liters.innerText = `${2 - (250 * fullCups) / 1000}L`;
-    // 250ml is the capacity of each small cup
+    // 250ml is the capacity of each small cup and 1000ml is the total capacity of the big cup
     // 2L is the total capacity of the big cup
   }
 }
