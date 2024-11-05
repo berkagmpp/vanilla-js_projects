@@ -13,10 +13,21 @@ async function getUser(username) {
     // console.log(data);
 
     createUserCard(data);
+    getRepos(username);
   } catch (err) {
     if (err.response.status === 404) {
       createErrorCard('No profile with this user');
     }
+  }
+}
+
+async function getRepos(username) {
+  try {
+    const { data } = await axios(APIUTL + username + '/repos?sort=created');
+    //https://api.github.com/users/berkagmpp/repos
+    addRoposToCard(data);
+  } catch (err) {
+    createErrorCard('Problem fetching repos');
   }
 }
 
@@ -51,6 +62,20 @@ function createErrorCard(msg) {
     `;
 
   main.innerHTML = cardHTML;
+}
+
+function addRoposToCard(repos) {
+  const reposEl = document.getElementById('repos');
+
+  repos.slice(0, 5).forEach((repo) => {
+    const repoEl = document.createElement('a');
+    repoEl.classList.add('repo');
+    repoEl.href = repo.html_url;
+    repoEl.target = '_blank';
+    repoEl.innerText = repo.name;
+
+    reposEl.appendChild(repoEl);
+  });
 }
 
 form.addEventListener('submit', (e) => {
