@@ -23,5 +23,7 @@ speedEl.addEventListener('input', (e) => {
 
   if (e.target.value > 5) {
     e.target.value = 5;
+  } else if (e.target.value < 1) {
+    e.target.value = 1;
   }
 });
