@@ -14,6 +14,14 @@ const randomFunc = {
   symbol: getRamdomSymbol,
 };
 
+clipboardEl.addEventListener('click', async () => {
+  await navigator.clipboard.writeText(resultEl.innerText);
+  // navigator is a global object that is used to interact with the browser
+  // clipboard has many methods for copy, paste, cut, etc.
+  // writeText() is a method to copy the text
+  // async and await are used to wait for the clipboard to finish copying the text
+});
+
 generateEl.addEventListener('click', () => {
   const length = +lenghEl.value;
   const hasLower = lowercaseEl.checked; // true or false
