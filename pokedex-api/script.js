@@ -1,6 +1,6 @@
-const poke_container = document.getElementById('poke_container');
+const poke_container = document.getElementById('poke-container');
 const pokemon_count = 150;
-const color = {
+const colors = {
   fire: '#fddfdf',
   grass: '#defde0',
   electric: '#fcf7de',
@@ -17,6 +17,9 @@ const color = {
   normal: '#f5f5f5',
 };
 
+const main_types = Object.keys(colors);
+// console.log(main_types);
+
 const fetchPokemons = async () => {
   for (let i = 1; i <= pokemon_count; i++) {
     await getPokemon(i);
@@ -27,7 +30,48 @@ const getPokemon = async (id) => {
   const url = `http://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
+  //   console.log(data);
+  createPokemonCard(data);
+};
+
+const createPokemonCard = (pokemon) => {
+  const pokemonEl = document.createElement('div');
+  pokemonEl.classList.add('pokemon');
+
+  // make uppercase the first letter of the name
+  const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+
+  // make 3 digit number of id
+  const id = pokemon.id.toString().padStart(3, '0');
+
+  // get the type of the pokemon
+  const poke_types = pokemon.types.map((type) => type.type.name);
+  // pokemon.types is an array of objects, so we map it to get the type name
+  const type = main_types.find((type) => poke_types.indexOf(type) > -1);
+  // find the first type that is in the main_types array
+  // -1 means not found, so if it is found it will be greater than
+  const color = colors[type];
+
+  pokemonEl.style.backgroundColor = color;
+
+  const pokemonInnerHtml = `        
+    <div class="img-container">
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png"
+        alt="${name}"
+      />
+        
+    </div>
+    <div class="info">
+      <span class="number">#${id}</span>
+      <h3 class="name">${name}</h3>
+      <small class="type">Type: <span>${type}</span></small>
+    </div>
+  `;
+
+  pokemonEl.innerHTML = pokemonInnerHtml;
+
+  poke_container.appendChild(pokemonEl);
 };
 
 fetchPokemons();
