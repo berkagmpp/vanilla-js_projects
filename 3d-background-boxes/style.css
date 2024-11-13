@@ -59,7 +59,9 @@ body {
 }
 
 .boxes.big .box {
-    transform: rotateZ('360deg');
+    /* transform: rotateZ('360deg'); */
+    /* above is not operated */
+    transform: rotate3d(1, 1, 1, 360deg);
 }
 
 .box {
