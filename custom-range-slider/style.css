@@ -48,7 +48,7 @@ input[type='range']+label {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-/*  Chrome, Safari and MS Edge */
+/*  for Chrome, Safari and MS Edge */
 input[type='range']::-webkit-slider-runnable-track {
     background: purple;
     border-radius: 4px;
@@ -69,8 +69,9 @@ input[type='range']::-webkit-slider-thumb {
     ;
 }
 
-/* Firefox */
+/* for Firefox */
 input[type='range']::-moz-range-track {
+    /* will only select text range */
     background: purple;
     border-radius: 4px;
     width: 100%;
